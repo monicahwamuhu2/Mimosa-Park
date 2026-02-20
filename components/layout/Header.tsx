@@ -20,17 +20,24 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Only go transparent on the home page
   const isHome = pathname === '/';
 
+  // Non-home pages are always solid — start scrolled as true for them
+  const [scrolled, setScrolled] = useState(!isHome);
+
   useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+    // Home page: check current scroll position immediately on mount
+    setScrolled(window.scrollY > 60);
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -132,7 +139,7 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>
             <Link
-              href="#footer"
+              href="/#footer"
               className="rounded-full px-7 py-2.5 text-sm font-bold text-white shadow-lg bg-orange-500 hover:bg-orange-600 hover:shadow-orange-200 hover:shadow-xl transition-all duration-300"
             >
               Book Now
@@ -207,13 +214,11 @@ export default function Header() {
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           <div className="flex items-center">
-                            {/* Active dot */}
                             <span className={`mr-3 h-1.5 w-1.5 rounded-full flex-shrink-0 transition-all duration-200 ${
                               isActive ? 'bg-mimosa-500' : 'bg-gray-300 group-hover:bg-mimosa-400'
                             }`} />
                             {item.name}
                           </div>
-                          {/* Arrow on hover */}
                           <span className={`text-mimosa-400 transition-all duration-200 ${
                             isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0'
                           }`}>
@@ -227,8 +232,8 @@ export default function Header() {
 
                 <div className="pt-6 border-t border-gray-100">
                   <Link
-                    href="#footer"
-                    className="block w-full rounded-full bg-mimosa-500 px-8 py-4 text-center text-base font-bold text-white shadow-lg hover:bg-mimosa-600 transition-all duration-300"
+                    href="/#footer"
+                    className="block w-full rounded-full bg-orange-500 px-8 py-4 text-center text-base font-bold text-white shadow-lg hover:bg-orange-600 transition-all duration-300"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Book Now
