@@ -132,7 +132,7 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>
             <Link
-              href="#booking"
+              href="#footer"
               className="rounded-full px-7 py-2.5 text-sm font-bold text-white shadow-lg bg-orange-500 hover:bg-orange-600 hover:shadow-orange-200 hover:shadow-xl transition-all duration-300"
             >
               Book Now
@@ -227,7 +227,7 @@ export default function Header() {
 
                 <div className="pt-6 border-t border-gray-100">
                   <Link
-                    href="#booking"
+                    href="#footer"
                     className="block w-full rounded-full bg-mimosa-500 px-8 py-4 text-center text-base font-bold text-white shadow-lg hover:bg-mimosa-600 transition-all duration-300"
                     onClick={() => setMobileMenuOpen(false)}
                   >

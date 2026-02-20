@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#2d2520] text-gray-300 overflow-hidden">
+    <footer id="footer" className="relative bg-[#2d2520] text-gray-300 overflow-hidden">
       {/* Large Watermark Text */}
       <div className="absolute inset-0 flex items-end justify-start pointer-events-none">
         <h2
@@ -34,7 +34,7 @@ export default function Footer() {
             </h3>
 
             <Link
-              href="#booking"
+              href="#footer"
               className="inline-block rounded-full border-2 border-mimosa-400 px-10 py-3.5 text-base font-medium text-mimosa-400 hover:bg-mimosa-400 hover:text-gray-900 transition-all duration-300"
             >
               Book your stay now
