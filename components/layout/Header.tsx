@@ -70,8 +70,10 @@ export default function Header() {
           <motion.button
             whileTap={{ scale: 0.9 }}
             type="button"
-            className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors ${
-              transparent ? 'text-white hover:text-white/70' : 'text-gray-700 hover:text-mimosa-600'
+            className={`inline-flex items-center justify-center rounded-full p-2.5 transition-all duration-300 ${
+              transparent
+                ? 'text-white bg-black/30 backdrop-blur-sm border border-white/20'
+                : 'text-gray-700 hover:text-mimosa-600 hover:bg-mimosa-50'
             }`}
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open menu"
@@ -192,20 +194,31 @@ export default function Header() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.05, duration: 0.3 }}
+                        whileHover={{ x: 4 }}
+                        whileTap={{ scale: 0.98 }}
                       >
                         <Link
                           href={item.href}
-                          className={`flex items-center rounded-xl px-4 py-3 text-base font-medium transition-all duration-200 ${
+                          className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium transition-all duration-200 group ${
                             isActive
-                              ? 'bg-mimosa-50 text-mimosa-600'
-                              : 'text-gray-700 hover:bg-gray-50 hover:text-mimosa-600'
+                              ? 'bg-mimosa-50 text-mimosa-600 border border-mimosa-200'
+                              : 'text-gray-700 hover:bg-mimosa-50 hover:text-mimosa-600 border border-transparent hover:border-mimosa-100'
                           }`}
                           onClick={() => setMobileMenuOpen(false)}
                         >
-                          {isActive && (
-                            <span className="mr-3 h-1.5 w-1.5 rounded-full bg-mimosa-500 flex-shrink-0" />
-                          )}
-                          {item.name}
+                          <div className="flex items-center">
+                            {/* Active dot */}
+                            <span className={`mr-3 h-1.5 w-1.5 rounded-full flex-shrink-0 transition-all duration-200 ${
+                              isActive ? 'bg-mimosa-500' : 'bg-gray-300 group-hover:bg-mimosa-400'
+                            }`} />
+                            {item.name}
+                          </div>
+                          {/* Arrow on hover */}
+                          <span className={`text-mimosa-400 transition-all duration-200 ${
+                            isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0'
+                          }`}>
+                            →
+                          </span>
                         </Link>
                       </motion.div>
                     );
