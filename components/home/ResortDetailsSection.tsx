@@ -10,10 +10,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const details = [
   { label: 'Location', value: 'Sagana, Kenya' },
-  { label: 'Rooms', value: 'x rooms/ cottages' },
-  { label: 'Swimming Pool', value: 'xm by xm' },
-  { label: 'Camp Ground', value: 'x capacity' },
-  { label: 'Events Ground', value: 'x capacity' },
+  { label: 'Rooms', value: '4 rooms/ 9 cottages' },
+  { label: 'Swimming Pool', value: '20m by 8m' },
+  { label: 'Camp Ground', value: ' 100+capacity' },
+  { label: 'Events Ground', value: '5000+ capacity' },
 ];
 
 const carouselImages = [

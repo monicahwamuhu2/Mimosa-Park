@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: {
       index: true,
-        follow: true,
+      follow: true,
     },
   },
 };
@@ -87,9 +87,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Explicit link tags as fallback for broader browser/crawler support */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.png" type="image/png" sizes="512x512" />
         <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
