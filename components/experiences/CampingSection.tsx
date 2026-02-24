@@ -195,12 +195,12 @@ export default function CampingSection() {
               Each package includes access to shared amenities, clean washrooms, and a delicious breakfast.
             </p>
 
-            <Link
-              href="#booking"
+            <a
+              href="tel:+254741662514"
               className="inline-block rounded-full bg-gray-900 px-12 py-4 text-lg font-semibold text-white shadow-lg hover:bg-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Book your camping experience
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

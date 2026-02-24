@@ -244,12 +244,12 @@ export default function RoomsSection() {
               Meal packages include authentic Kenyan cuisine prepared fresh daily.
             </p>
 
-            <Link
-              href="#booking"
+            <a
+              href="tel:+254741662514"
               className="inline-block rounded-full bg-gray-900 px-12 py-4 text-lg font-semibold text-white shadow-lg hover:bg-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Book your room now
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

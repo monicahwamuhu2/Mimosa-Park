@@ -14,8 +14,8 @@ const navigation = [
   { name: 'Gallery', href: '/gallery' },
   { name: 'Dining Menu', href: '/dining' },
   { name: 'Drinks Menu', href: '/drinks' },
-  { name: 'Getting Here', href: '/getting-here' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Getting Here', href: 'https://maps.app.goo.gl/fV1ahaEZDQV9miqE7' },
+  { name: 'Contact', href: 'tel:+254741662514' },
 ];
 
 export default function Header() {
@@ -36,12 +36,10 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome]);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -99,11 +97,14 @@ export default function Header() {
           {/* Desktop navigation */}
           <div className="hidden lg:flex lg:gap-x-1">
             {navigation.map((item) => {
+              const isExternal = item.href.startsWith('http') || item.href.startsWith('tel:');
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.name}
                   href={item.href}
+                  target={isExternal ? '_blank' : undefined}
+                  rel={isExternal ? 'noopener noreferrer' : undefined}
                   className="relative px-3 py-2 text-sm font-medium leading-6 rounded-lg transition-all duration-200 group"
                 >
                   <span className={`absolute inset-0 rounded-lg scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-200 ${
@@ -137,21 +138,20 @@ export default function Header() {
 
           {/* Book Now — Desktop */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link
-              href="/#footer"
+            <a
+              href="tel:+254741662514"
               className="rounded-full px-7 py-2.5 text-sm font-bold text-white shadow-lg bg-orange-500 hover:bg-orange-600 hover:shadow-orange-200 hover:shadow-xl transition-all duration-300"
             >
               Book Now
-            </Link>
+            </a>
           </div>
         </nav>
       </header>
 
-      {/* ─── Mobile Menu — rendered OUTSIDE <header> to avoid stacking context issues ─── */}
+      {/* ─── Mobile Menu ─── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -161,7 +161,6 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Slide-in panel */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -194,6 +193,7 @@ export default function Header() {
               <div className="mt-6 flow-root">
                 <div className="space-y-1 py-4">
                   {navigation.map((item, idx) => {
+                    const isExternal = item.href.startsWith('http') || item.href.startsWith('tel:');
                     const isActive = pathname === item.href;
                     return (
                       <motion.div
@@ -204,6 +204,8 @@ export default function Header() {
                       >
                         <Link
                           href={item.href}
+                          target={isExternal ? '_blank' : undefined}
+                          rel={isExternal ? 'noopener noreferrer' : undefined}
                           className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium transition-all duration-200 group ${
                             isActive
                               ? 'bg-mimosa-50 text-mimosa-600 border border-mimosa-200'
@@ -220,7 +222,7 @@ export default function Header() {
                           <span className={`text-mimosa-400 transition-all duration-200 ${
                             isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                           }`}>
-                            →
+                            {isExternal ? '↗' : '→'}
                           </span>
                         </Link>
                       </motion.div>
@@ -229,13 +231,13 @@ export default function Header() {
                 </div>
 
                 <div className="pt-6 border-t border-gray-100">
-                  <Link
-                    href="/#footer"
+                  <a
+                    href="tel:+254741662514"
                     className="block w-full rounded-full bg-orange-500 px-8 py-4 text-center text-base font-bold text-white shadow-lg hover:bg-orange-600 transition-all duration-300"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Book Now
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>

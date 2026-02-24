@@ -10,10 +10,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const details = [
   { label: 'Location', value: 'Sagana, Kenya' },
-  { label: 'Rooms', value: '4 rooms/ 9 cottages' },
-  { label: 'Swimming Pool', value: '20m by 8m' },
-  { label: 'Camp Ground', value: ' 100+capacity' },
-  { label: 'Events Ground', value: '5000+ capacity' },
+  { label: 'Rooms', value: 'x rooms/ cottages' },
+  { label: 'Swimming Pool', value: 'xm by xm' },
+  { label: 'Camp Ground', value: 'x capacity' },
+  { label: 'Events Ground', value: 'x capacity' },
 ];
 
 const carouselImages = [
@@ -128,12 +128,12 @@ export default function ResortDetailsSection() {
 
             {/* Reserve Button */}
             <div className="flex justify-start">
-              <Link
-                href="#booking"
+              <a
+                href="tel:+254741662514"
                 className="inline-block rounded-full border-2 border-gray-900 px-10 py-4 text-base font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 Reserve your stay
-              </Link>
+              </a>
             </div>
           </motion.div>
 
