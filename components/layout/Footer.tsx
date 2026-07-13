@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+const GETTING_HERE_URL = 'https://maps.app.goo.gl/htY3PtW3S4eEaAB36';
+
 export default function Footer() {
   return (
     <footer id="footer" className="relative bg-[#2d2520] text-gray-300 overflow-hidden">
@@ -55,12 +57,9 @@ export default function Footer() {
               {[
                 { name: 'Home', href: '/' },
                 { name: 'Accommodation', href: '/accommodation' },
-                { name: 'Experiences', href: '/experiences' },
                 { name: 'Dining', href: '/dining' },
                 { name: 'Drinks', href: '/drinks' },
                 { name: 'Gallery', href: '/gallery' },
-                { name: 'Getting Here', href: '/getting-here' },
-                { name: 'Contact', href: '/contact' },
               ].map((link) => (
                 <div key={link.name}>
                   <Link
@@ -71,6 +70,16 @@ export default function Footer() {
                   </Link>
                 </div>
               ))}
+              <div>
+                <a
+                  href={GETTING_HERE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base font-light text-gray-300 hover:text-mimosa-400 transition-colors block"
+                >
+                  Getting Here
+                </a>
+              </div>
             </nav>
           </div>
 

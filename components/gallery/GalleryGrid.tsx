@@ -13,19 +13,42 @@ const galleryImages = [
   { src: '/images/pool3.jpg', alt: 'Pool view 3', category: 'pool' },
   { src: '/images/pool4.jpg', alt: 'Pool area 4', category: 'pool', wide: true },
   { src: '/images/pool5.jpg', alt: 'Pool view 5', category: 'pool' },
-  
+
   // Rooms
   { src: '/images/room1.png', alt: 'Room interior 1', category: 'rooms', tall: true },
   { src: '/images/room2.png', alt: 'Room interior 2', category: 'rooms' },
   { src: '/images/room3.png', alt: 'Room interior 3', category: 'rooms' },
   { src: '/images/room4.png', alt: 'Room interior 4', category: 'rooms' },
-  
+
+  // Standard & Family Rooms
+  { src: '/images/stdroom1.jpeg', alt: 'Standard room', category: 'rooms', tall: true },
+  { src: '/images/stdroom2.jpeg', alt: 'Standard room detail', category: 'rooms' },
+  { src: '/images/stdroom3.jpeg', alt: 'Family room', category: 'rooms' },
+
+  // Deluxe Rooms
+  { src: '/images/deluxe.jpeg', alt: 'Deluxe room', category: 'rooms', wide: true },
+  { src: '/images/deluxe1.1.jpeg', alt: 'Deluxe room view', category: 'rooms' },
+  { src: '/images/deluxe1.jpeg', alt: 'Deluxe room 1', category: 'rooms' },
+  { src: '/images/deluxe2.jpeg', alt: 'Deluxe room 2', category: 'rooms', tall: true },
+  { src: '/images/deluxe3.jpeg', alt: 'Deluxe room 3', category: 'rooms' },
+  { src: '/images/deluxe4.jpeg', alt: 'Deluxe room 4', category: 'rooms' },
+  { src: '/images/deluxe5.jpeg', alt: 'Deluxe room 5', category: 'rooms' },
+
+  // Luxury Tented Cottages
+  { src: '/images/cottage1.jpeg', alt: 'Luxury tented cottage', category: 'cottages', tall: true },
+  { src: '/images/cottage2.jpeg', alt: 'Tented cottage interior', category: 'cottages' },
+  { src: '/images/cottage3.jpeg', alt: 'Cottage exterior', category: 'cottages' },
+  { src: '/images/cottage4.jpeg', alt: 'Cottage view', category: 'cottages', wide: true },
+  { src: '/images/cottage5.jpeg', alt: 'Cottage detail', category: 'cottages' },
+  { src: '/images/cottage6.jpeg', alt: 'Cottage setting', category: 'cottages', tall: true },
+  { src: '/images/cottage7.jpeg', alt: 'Cottage surroundings', category: 'cottages' },
+
   // Lounge & Common Areas
   { src: '/images/lounge.jpg', alt: 'Lounge area', category: 'facilities' },
   { src: '/images/lounge2.jpg', alt: 'Lounge view 2', category: 'facilities', tall: true },
   { src: '/images/gazebo.jpg', alt: 'Gazebo area', category: 'facilities' },
   { src: '/images/mangotree.jpg', alt: 'Mango tree seating', category: 'facilities' },
-  
+
   // Camping & Tents
   { src: '/images/tent1.jpeg', alt: 'Tent camping 1', category: 'camping' },
   { src: '/images/tent3.jpeg', alt: 'Tent setup', category: 'camping' },
@@ -37,21 +60,21 @@ const galleryImages = [
   { src: '/images/camp6.jpg', alt: 'Camp site 6', category: 'camping' },
   { src: '/images/camp7.png', alt: 'Camping area 7', category: 'camping' },
   { src: '/images/camp8.png', alt: 'Camp view 8', category: 'camping' },
-  
+
   // Island Views
   { src: '/images/island.png', alt: 'Island view', category: 'nature', wide: true },
   { src: '/images/island2.png', alt: 'Island area 2', category: 'nature' },
-  
+
   // Scenic Views
   { src: '/images/views1.jpg', alt: 'River view', category: 'nature', tall: true },
   { src: '/images/views2.jpg', alt: 'Scenic view 2', category: 'nature' },
   { src: '/images/views3.jpg', alt: 'Nature view', category: 'nature' },
-  
+
   // Grounds & Exterior
   { src: '/images/grounds.jpg', alt: 'Resort grounds', category: 'exterior', wide: true },
   { src: '/images/grounds2.jpg', alt: 'Grounds view 2', category: 'exterior' },
   { src: '/images/hero.jpg', alt: 'Resort exterior', category: 'exterior', tall: true },
-  
+
   // Activities & People
   { src: '/images/people.jpeg', alt: 'Guests enjoying activities', category: 'activities' },
   { src: '/images/experiences.png', alt: 'Experience activities', category: 'activities' },
@@ -65,6 +88,7 @@ export default function GalleryGrid() {
     { id: 'all', name: 'All Photos' },
     { id: 'pool', name: 'Swimming Pool' },
     { id: 'rooms', name: 'Rooms' },
+    { id: 'cottages', name: 'Tented Cottages' },
     { id: 'camping', name: 'Camping' },
     { id: 'facilities', name: 'Facilities' },
     { id: 'nature', name: 'Nature & Views' },
@@ -72,8 +96,8 @@ export default function GalleryGrid() {
     { id: 'activities', name: 'Activities' },
   ];
 
-  const filteredImages = filter === 'all' 
-    ? galleryImages 
+  const filteredImages = filter === 'all'
+    ? galleryImages
     : galleryImages.filter(img => img.category === filter);
 
   const openLightbox = (index: number) => {
@@ -167,7 +191,7 @@ export default function GalleryGrid() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                
+
                 {/* Image Label on Hover */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <p className="text-white text-sm font-medium">{image.alt}</p>
